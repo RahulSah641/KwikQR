@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create beautiful custom QR codes for links, Wi-Fi, contacts, email, WhatsApp and more.">
+  <meta name="theme-color" content="#17152c">
+  <title>KwikQR — QR Code Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#"><span class="brand-symbol"><i></i><i></i><i></i><i></i></span><span>kwik<span class="brand-accent">qr</span></span></a>
+  <nav class="main-nav"><a href="#generator" class="active">Generator</a><a href="#features">Features</a><a href="#how">How it works</a></nav>
+  <div class="header-right"><span class="secure-label"><span class="secure-dot"></span> Private by design</span><a class="header-cta" href="#generator">Create QR <span>↗</span></a></div>
+  <button class="mobile-menu" aria-label="Toggle navigation">☰</button>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="eyebrow"><span class="eyebrow-line"></span> QR CODE STUDIO</div>
+      <h1>Make every scan<br> <em>mean something.</em></h1>
+      <p>Create polished, ready-to-share QR codes for your business, brand, events, and everyday moments.</p>
+      <div class="hero-points"><span>✓ No sign-up required</span><span>✓ PNG & SVG exports</span><span>✓ Fast generation</span></div>
+      <a href="#generator" class="hero-link">Start creating <span>↓</span></a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
+      <div class="floating-chip chip-top"><span class="chip-icon">✦</span><span><b>Made to share</b><small>Ready in seconds</small></span></div>
+      <div class="qr-art"><div class="qr-art-grid"></div><div class="qr-art-center">Q</div></div>
+      <div class="floating-chip chip-bottom"><span class="live-dot"></span><span><b>Scan-ready</b><small>Clean. Clear. Custom.</small></span></div>
+      <div class="visual-spark spark-one">✳</div><div class="visual-spark spark-two">✦</div>
+    </div>
+  </section>
+
+  <section class="generator-section" id="generator">
+    <div class="section-intro"><div class="eyebrow dark-eyebrow">THE GENERATOR</div><h2>Your QR code, your way.</h2><p>Choose what your code should open, customize its look, and download.</p></div>
+    <div class="generator-card">
+      <div class="generator-heading"><div><span class="step-label">01 / CONTENT</span><h3>What would you like to share?</h3></div><span class="secure-mini">⌑ Processed securely</span></div>
+      <div class="type-tabs" role="tablist" aria-label="QR content type">
+        <button class="type-tab active" data-kind="url"><span>↗</span>Website</button>
+        <button class="type-tab" data-kind="text"><span>▤</span>Text</button>
+        <button class="type-tab" data-kind="email"><span>✉</span>Email</button>
+        <button class="type-tab" data-kind="phone"><span>⌕</span>Phone</button>
+        <button class="type-tab" data-kind="sms"><span>▱</span>SMS</button>
+        <button class="type-tab" data-kind="wifi"><span>⌁</span>Wi-Fi</button>
+        <button class="type-tab" data-kind="vcard"><span>♙</span>Contact</button>
+        <button class="type-tab" data-kind="whatsapp"><span>◉</span>WhatsApp</button>
+        <button class="type-tab" data-kind="location"><span>⌖</span>Location</button>
+        <button class="type-tab" data-kind="event"><span>▦</span>Event</button>
+        <button class="type-tab" data-kind="pdf"><span>▤</span>PDF</button>
+      </div>
+
+      <div class="generator-body">
+        <div class="form-column">
+          <div class="example-banner"><span class="info-icon">i</span><span>Not sure where to start?</span><button id="sampleBtn" type="button">Load sample data</button></div>
+          <div id="contentFields" class="content-fields"></div>
+          <div class="settings-block">
+            <div class="block-heading"><span class="step-label">02 / STYLE</span><span class="optional-tag">Customize appearance</span></div>
+            <div class="style-grid">
+              <label class="field full"><span>Social media design</span><select id="socialTheme"><option value="classic">Classic — custom colors</option><option value="instagram">Instagram</option><option value="whatsapp">WhatsApp</option><option value="facebook">Facebook</option><option value="google">Google Reviews</option><option value="youtube">YouTube</option><option value="tiktok">TikTok</option><option value="linkedin">LinkedIn</option><option value="x">X (Twitter)</option><option value="telegram">Telegram</option><option value="snapchat">Snapchat</option><option value="pinterest">Pinterest</option></select><small class="theme-help">Choose a ready-made color style, or select Classic to use your own colors.</small></label>
+              <label class="field"><span>QR size</span><select id="qrSize"><option value="256">256 × 256 px</option><option value="320" selected>320 × 320 px</option><option value="512">512 × 512 px</option><option value="768">768 × 768 px</option><option value="1024">1024 × 1024 px</option></select></label>
+              <label class="field"><span>Foreground</span><div class="color-field"><input type="color" id="fgColor" value="#17152c"><span id="fgHex">#17152C</span></div></label>
+              <label class="field"><span>Background</span><div class="color-field"><input type="color" id="bgColor" value="#ffffff"><span id="bgHex">#FFFFFF</span></div></label>
+              <label class="field"><span>Error correction</span><select id="errorLevel"><option value="L">Low — smaller code</option><option value="M" selected>Medium — balanced</option><option value="Q">Quartile — durable</option><option value="H">High — most resilient</option></select></label>
+              <label class="field"><span>Quiet zone</span><select id="border"><option value="2">Compact</option><option value="4" selected>Standard</option><option value="6">Wide</option><option value="8">Extra wide</option></select></label>
+            </div>
+            <div class="format-row"><span>Download format</span><div class="format-toggle"><button class="format-btn active" data-format="png">PNG</button><button class="format-btn" data-format="svg">SVG</button></div></div>
+          </div>
+          <button class="generate-btn" id="generateBtn"><span class="generate-icon">▦</span> Generate QR code <span class="btn-arrow">→</span></button>
+          <p class="form-footnote"><span>✦</span> Your QR code is generated when you press the button.</p>
+        </div>
+
+        <aside class="preview-column">
+          <div class="preview-topline"><span class="step-label">03 / PREVIEW</span><span class="preview-status"><i></i> Live workspace</span></div>
+          <div class="preview-stage">
+            <div class="qr-frame"><div id="qrPlaceholder" class="qr-placeholder"><div class="placeholder-symbol">▦</div><b>Your QR code<br>will appear here</b><small>Choose a content type<br>and generate your code</small></div><img id="qrPreview" alt="Generated QR code preview" hidden></div>
+            <div class="scan-hint"><span class="scan-icon">⌁</span><span><b>Ready for the real world</b><small>Test your code with a phone camera before sharing.</small></span></div>
+          </div>
+          <div class="preview-details"><div><span>CONTENT TYPE</span><b id="previewType">Website URL</b></div><div><span>OUTPUT SIZE</span><b id="previewSize">320 × 320 px</b></div></div>
+          <button class="download-btn" id="downloadBtn" disabled><span>↓</span> Download QR code</button>
+          <p class="download-note">High-quality export. No watermark.</p>
+          <div id="errorBox" class="error-box" role="alert" hidden></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section" id="features">
+    <div class="section-intro"><div class="eyebrow dark-eyebrow">MADE FOR EVERY USE CASE</div><h2>One little code. So many possibilities.</h2><p>From a simple link to a full contact card, create the right QR experience.</p></div>
+    <div class="feature-grid">
+      <article class="feature-card"><span class="feature-icon purple">↗</span><h3>Share a destination</h3><p>Send people to your website, portfolio, menu, product page, or campaign.</p></article>
+      <article class="feature-card"><span class="feature-icon mint">⌁</span><h3>Connect in a tap</h3><p>Let guests join Wi-Fi or start a call, message, or WhatsApp chat.</p></article>
+      <article class="feature-card"><span class="feature-icon peach">♙</span><h3>Make introductions</h3><p>Share contact details with a vCard QR code that people can save.</p></article>
+      <article class="feature-card"><span class="feature-icon blue">▦</span><h3>Bring moments together</h3><p>Make event and location details easy to open from a printed card or poster.</p></article>
+    </div>
+  </section>
+
+  <section class="how-section" id="how"><div class="how-inner"><div><div class="eyebrow">THREE SIMPLE STEPS</div><h2>From idea to<br><em>scan in seconds.</em></h2></div><div class="steps"><div class="step"><span>01</span><div><b>Choose your content</b><p>Select a QR type and enter the details you want to share.</p></div></div><div class="step"><span>02</span><div><b>Make it yours</b><p>Pick your colors, size, and export format.</p></div></div><div class="step"><span>03</span><div><b>Download and share</b><p>Save your QR code and test it before putting it out there.</p></div></div></div></div></section>
+</main>
+
+<footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-symbol"><i></i><i></i><i></i><i></i></span><span>kwik<span class="brand-accent">qr</span></span></a><span>Make it easy to connect.</span><div><a href="#generator">Generator</a><a href="#features">Features</a><a href="#how">How it works</a></div><small>© 2026 KwikQR Studio</small></footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
