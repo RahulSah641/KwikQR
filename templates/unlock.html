@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>Protected QR — KwikQR</title>
+<link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='img/favicon-32.png') }}">
+<link rel="apple-touch-icon" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;font-family:"DM Sans",system-ui,sans-serif;color:#1c1a31;background:radial-gradient(ellipse at 50% 20%,#2e2758,transparent 60%),linear-gradient(135deg,#17152c,#211b40)}
+.card{width:min(400px,100%);background:#fff;border-radius:20px;padding:30px 26px;box-shadow:0 24px 70px #0006;text-align:center}
+.logo{width:64px;height:64px;border-radius:18px}.name{font:800 26px Manrope,sans-serif;letter-spacing:-1px;margin:8px 0 2px}.name span{color:#6848d9}
+h1{font-size:18px;margin:18px 0 4px}p{color:#77758b;font-size:13px;line-height:1.55;margin:0 0 16px}
+input{width:100%;height:46px;border:1px solid #e0dcec;border-radius:10px;padding:0 14px;font-size:15px;outline:none}input:focus{border-color:#6848d9;box-shadow:0 0 0 3px #6848d91f}
+button,.btn{display:block;width:100%;margin-top:12px;height:46px;border:0;border-radius:10px;background:linear-gradient(100deg,#6442d2,#8660e8);color:#fff;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none;line-height:46px}
+.err{background:#fdeef0;color:#a3263a;border-radius:9px;padding:9px 12px;font-size:12.5px;margin-bottom:12px}
+pre{text-align:left;white-space:pre-wrap;word-break:break-word;background:#f7f5fc;border-radius:10px;padding:14px;font:13px/1.55 "DM Sans",sans-serif;max-height:50vh;overflow:auto}
+</style></head><body>
+<main class="card">
+  <img class="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="KwikQR">
+  <div class="name">Kwik<span>QR</span></div>
+  {% if content is defined %}
+    <h1>Unlocked</h1><p>Here is the shared content.</p>
+    <pre>{{ content }}</pre>
+    {% if link %}<a class="btn" href="{{ link }}">Open</a>{% endif %}
+  {% else %}
+    <h1>This QR code is protected</h1><p>Enter the password to continue.</p>
+    {% if error %}<div class="err" role="alert">{{ error }}</div>{% endif %}
+    <form method="post" autocomplete="off"><input type="password" name="password" placeholder="Password" required autofocus><button type="submit">Unlock</button></form>
+  {% endif %}
+</main></body></html>
